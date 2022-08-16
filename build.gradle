@@ -12,8 +12,9 @@ def allureVersion = "2.18.1",
     restAssuredVersion = "5.1.1",
     appiumVersion = "8.1.1",
 //    appiumVersion = "7.6.0",
-    slf4jVersion = '1.7.36',
-    junitVersion = "5.9.0"
+    slf4jVersion = "1.7.36",
+    junitVersion = "5.9.0",
+    ownerVersion = "1.0.12"
 
 allure {
     report {
@@ -36,6 +37,7 @@ dependencies {
             "io.rest-assured:rest-assured:$restAssuredVersion",
             "io.qameta.allure:allure-rest-assured:$allureVersion",
             "io.appium:java-client:$appiumVersion",
+            "org.aeonbits.owner:owner:$ownerVersion",
             "org.slf4j:slf4j-simple:$slf4jVersion",
             "org.junit.jupiter:junit-jupiter:$junitVersion"
     )
