@@ -2,7 +2,6 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.WebDriverRunner;
 import config.DriverConfig;
 import drivers.BrowserStackMobileDriver;
 import drivers.EmulationMobileDriver;
@@ -12,6 +11,7 @@ import helpers.Attach;
 import helpers.WikipediaApp;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.aeonbits.owner.ConfigFactory;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,7 +19,6 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import static com.codeborne.selenide.Configuration.browser;
 import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.WebDriverRunner.closeWebDriver;
 import static com.codeborne.selenide.logevents.SelenideLogger.addListener;
 import static helpers.Attach.sessionId;
 import static io.qameta.allure.Allure.step;
@@ -60,7 +59,7 @@ public class TestBase {
             Attach.screenshotAs("Last screenshot");
             Attach.pageSource();
 
-            step("Close driver", WebDriverRunner::closeWebDriver);
+            step("Close driver", Selenide::closeWebDriver);
 
             Attach.video(sessionId);
         } else {
