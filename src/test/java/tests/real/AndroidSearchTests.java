@@ -1,15 +1,18 @@
 package tests.real;
 
 import io.appium.java_client.AppiumBy;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import tests.TestBase;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static io.qameta.allure.Allure.step;
 
+@Tag("real")
 public class AndroidSearchTests extends TestBase {
     @Test
     void searchTest() {
@@ -28,6 +31,7 @@ public class AndroidSearchTests extends TestBase {
                         .shouldHave(sizeGreaterThan(0)));
     }
 
+    @Tag("realSearchResultsTest")
     @Test
     void searchResultsTest() {
         step("Skip onboarding", () ->

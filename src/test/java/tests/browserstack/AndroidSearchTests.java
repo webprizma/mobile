@@ -1,15 +1,16 @@
 package tests.browserstack;
 
 import io.appium.java_client.AppiumBy;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import tests.local.TestBase;
+import tests.TestBase;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static io.qameta.allure.Allure.step;
-
+@Tag("browserstack")
 public class AndroidSearchTests extends TestBase {
     @Test
     void searchTest() {

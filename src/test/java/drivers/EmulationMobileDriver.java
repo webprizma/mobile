@@ -13,7 +13,7 @@ import org.openqa.selenium.WebDriver;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class RealMobileDriver implements WebDriverProvider {
+public class EmulationMobileDriver implements WebDriverProvider {
 
     public static DriverConfig driverConfig = ConfigFactory.create(DriverConfig.class, System.getProperties());
 

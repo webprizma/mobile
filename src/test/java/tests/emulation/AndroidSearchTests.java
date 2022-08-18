@@ -1,7 +1,9 @@
-package tests.local;
+package tests.emulation;
 
 import io.appium.java_client.AppiumBy;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import tests.TestBase;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.text;
@@ -9,6 +11,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static io.qameta.allure.Allure.step;
 
+@Tag("emulation")
 public class AndroidSearchTests extends TestBase {
     @Test
     void searchTest() {
@@ -42,7 +45,7 @@ public class AndroidSearchTests extends TestBase {
                 $$(AppiumBy.id("org.wikipedia.alpha:id/page_list_item_title")).first().click());
 
         step("Verify content found", () ->
-                $(AppiumBy.xpath("//android.widget.TextView[@resource-id='pcs-edit-section-title-description']"))
+                $(AppiumBy.xpath("//android.view.View[@resource-id='pcs-edit-section-title-description']"))
                         .shouldHave(text("American technology company")));
     }
 }
