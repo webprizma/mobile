@@ -48,7 +48,6 @@ public class OnboardTests extends TestBase {
         });
     }
 
-    @Disabled
     @Test
     void addNewLanguageTest() {
         step("Add new language", () -> {
