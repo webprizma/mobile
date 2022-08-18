@@ -26,6 +26,7 @@ public class BrowserStackMobileDriver implements WebDriverProvider {
         mutableCapabilities.setCapability("project", "First Java Project");
         mutableCapabilities.setCapability("build", "browserstack-build-1");
         mutableCapabilities.setCapability("name", "first_test");
+        mutableCapabilities.setCapability("browserstack.idleTimeout", "5");
 
         return new RemoteWebDriver(getBrowserstackUrl(), mutableCapabilities);
     }
