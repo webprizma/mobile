@@ -2,6 +2,7 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.WebDriverRunner;
 import config.DriverConfig;
 import drivers.BrowserStackMobileDriver;
 import drivers.EmulationMobileDriver;
@@ -16,7 +17,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import static com.codeborne.selenide.Configuration.browser;
 import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.WebDriverRunner.closeWebDriver;
 import static com.codeborne.selenide.logevents.SelenideLogger.addListener;
 import static helpers.Attach.sessionId;
 import static io.qameta.allure.Allure.step;
@@ -28,13 +31,13 @@ public class TestBase {
     @BeforeAll
     public static void beforeAll() {
         if (driverConfig.getDriverName().equals("browserstack")) {
-            Configuration.browser = BrowserStackMobileDriver.class.getName();
+            browser = BrowserStackMobileDriver.class.getName();
         } else if (driverConfig.getDriverName().equals("emulation")) {
-            Configuration.browser = EmulationMobileDriver.class.getName();
+            browser = EmulationMobileDriver.class.getName();
         } else if (driverConfig.getDriverName().equals("real")) {
-            Configuration.browser = RealMobileDriver.class.getName();
+            browser = RealMobileDriver.class.getName();
         } else if (driverConfig.getDriverName().equals("selenoid")) {
-            Configuration.browser = SelenoidMobileDriver.class.getName();
+            browser = SelenoidMobileDriver.class.getName();
         } else {
             throw new RuntimeException("No such driver");
         }
@@ -57,7 +60,7 @@ public class TestBase {
             Attach.screenshotAs("Last screenshot");
             Attach.pageSource();
 
-            step("Close driver", Selenide::closeWebDriver);
+            step("Close driver", WebDriverRunner::closeWebDriver);
 
             Attach.video(sessionId);
         } else {
